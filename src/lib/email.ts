@@ -1,7 +1,14 @@
 // src/lib/email.ts
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy-load Resend client to avoid build-time instantiation
+let resendClient: Resend | null = null;
+function getResendClient() {
+  if (!resendClient) {
+    resendClient = new Resend(process.env.RESEND_API_KEY);
+  }
+  return resendClient;
+}
 
 const FROM_EMAIL = process.env.FROM_EMAIL || 'onboarding@resend.dev';
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'packlite.aryan@gmail.com';
@@ -51,7 +58,7 @@ export async function sendQuoteConfirmation(quoteData: QuoteData) {
       `)
       .join('');
 
-    const { data, error } = await resend.emails.send({
+    const { data, error } = await getResendClient().emails.send({
       from: `${COMPANY_NAME} <${FROM_EMAIL}>`,
       to: [quoteData.email],
       subject: `Quote Request Received - ${COMPANY_NAME} (Ref: #${quoteData.id})`,
@@ -155,7 +162,7 @@ export async function sendAdminQuoteNotification(quoteData: QuoteData) {
       `)
       .join('');
 
-    const { data, error } = await resend.emails.send({
+    const { data, error } = await getResendClient().emails.send({
       from: `${COMPANY_NAME} <${FROM_EMAIL}>`,
       to: [ADMIN_EMAIL],
       subject: `🔔 New Quote Request #${quoteData.id} - ${quoteData.companyName}`,
@@ -265,7 +272,7 @@ export async function sendAdminQuoteNotification(quoteData: QuoteData) {
 // Send quote response from admin to customer
 export async function sendQuoteResponse(responseData: QuoteResponseData) {
   try {
-    const { data, error } = await resend.emails.send({
+    const { data, error } = await getResendClient().emails.send({
       from: `${COMPANY_NAME} <${FROM_EMAIL}>`,
       to: [responseData.quoteTo],
       subject: `Quote Response - ${COMPANY_NAME} (Ref: #${responseData.quoteId})`,
@@ -393,7 +400,7 @@ export async function sendOrderConfirmation(orderData: OrderData) {
       ? `${orderData.deliveryAddress}, ${orderData.deliveryCity}, ${orderData.deliveryState} - ${orderData.deliveryPincode}` 
       : 'To be confirmed';
 
-    const { data, error } = await resend.emails.send({
+    const { data, error } = await getResendClient().emails.send({
       from: `${COMPANY_NAME} <${FROM_EMAIL}>`,
       to: [orderData.customerEmail],
       subject: `Order Confirmation #${orderData.orderNumber} - ${COMPANY_NAME}`,
@@ -536,7 +543,7 @@ export async function sendAdminOrderNotification(orderData: OrderData) {
       ? `${orderData.deliveryAddress}, ${orderData.deliveryCity}, ${orderData.deliveryState} - ${orderData.deliveryPincode}` 
       : 'Not provided';
 
-    const { data, error } = await resend.emails.send({
+    const { data, error } = await getResendClient().emails.send({
       from: `${COMPANY_NAME} <${FROM_EMAIL}>`,
       to: [ADMIN_EMAIL],
       subject: `🛒 New Order #${orderData.orderNumber} - ₹${orderData.totalAmount.toFixed(2)}`,
