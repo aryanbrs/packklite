@@ -6,12 +6,12 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { PrismaClient } from '@/generated/prisma';
+import { getPrismaClient } from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
 
 export const runtime = 'nodejs';
 
-const prisma = new PrismaClient();
+const prisma = getPrismaClient();
 
 export async function GET(request: NextRequest) {
   try {

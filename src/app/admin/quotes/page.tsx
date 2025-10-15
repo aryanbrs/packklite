@@ -1,13 +1,13 @@
 // src/app/admin/quotes/page.tsx
 import { redirect } from 'next/navigation';
 import { getSession } from '@/lib/auth';
-import { PrismaClient } from '@/generated/prisma';
+import { getPrismaClient } from '@/lib/prisma';
 import AdminLayout from '@/components/AdminLayout';
 import QuotesList from '@/components/QuotesList';
 
 export const dynamic = 'force-dynamic';
 
-const prisma = new PrismaClient();
+const prisma = getPrismaClient();
 
 export default async function AdminQuotesPage() {
   const session = await getSession();

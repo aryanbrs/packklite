@@ -1,13 +1,13 @@
 // src/app/admin/dashboard/page.tsx
 import { redirect } from 'next/navigation';
 import { getSession } from '@/lib/auth';
-import { PrismaClient } from '@/generated/prisma';
+import { getPrismaClient } from '@/lib/prisma';
 import AdminLayout from '@/components/AdminLayout';
 import AdminDashboard from '@/components/AdminDashboard';
 
 export const dynamic = 'force-dynamic';
 
-const prisma = new PrismaClient();
+const prisma = getPrismaClient();
 
 export default async function AdminDashboardPage() {
   const session = await getSession();

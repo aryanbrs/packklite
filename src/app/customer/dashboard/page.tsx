@@ -1,12 +1,12 @@
 // src/app/customer/dashboard/page.tsx
 import { redirect } from 'next/navigation';
 import { getCustomerSession } from '@/lib/customer-auth';
-import { PrismaClient } from '@/generated/prisma';
+import { getPrismaClient } from '@/lib/prisma';
 import CustomerDashboard from '@/components/CustomerDashboard';
 
 export const dynamic = 'force-dynamic';
 
-const prisma = new PrismaClient();
+const prisma = getPrismaClient();
 
 export default async function CustomerDashboardPage() {
   const session = await getCustomerSession();

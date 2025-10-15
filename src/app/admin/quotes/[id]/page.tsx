@@ -1,12 +1,12 @@
 // src/app/admin/quotes/[id]/page.tsx
 import { redirect } from 'next/navigation';
 import { getSession } from '@/lib/auth';
-import { PrismaClient } from '@/generated/prisma';
+import { getPrismaClient } from '@/lib/prisma';
 import QuoteDetail from '@/components/QuoteDetail';
 
 export const dynamic = 'force-dynamic';
 
-const prisma = new PrismaClient();
+const prisma = getPrismaClient();
 
 export default async function QuoteDetailPage({ params }: { params: { id: string } }) {
   const session = await getSession();

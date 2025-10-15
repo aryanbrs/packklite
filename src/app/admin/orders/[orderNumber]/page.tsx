@@ -1,12 +1,12 @@
 // src/app/admin/orders/[orderNumber]/page.tsx
 import { redirect } from 'next/navigation';
 import { getSession } from '@/lib/auth';
-import { PrismaClient } from '@/generated/prisma';
+import { getPrismaClient } from '@/lib/prisma';
 import OrderDetail from '@/components/OrderDetail';
 
 export const dynamic = 'force-dynamic';
 
-const prisma = new PrismaClient();
+const prisma = getPrismaClient();
 
 export default async function OrderDetailPage({ params }: { params: { orderNumber: string } }) {
   const session = await getSession();

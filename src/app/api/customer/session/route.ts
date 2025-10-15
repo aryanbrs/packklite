@@ -1,11 +1,11 @@
 // src/app/api/customer/session/route.ts
 import { NextResponse } from 'next/server';
 import { getCustomerSession } from '@/lib/customer-auth';
-import { PrismaClient } from '@/generated/prisma';
+import { getPrismaClient } from '@/lib/prisma';
 
 export const runtime = 'nodejs';
 
-const prisma = new PrismaClient();
+const prisma = getPrismaClient();
 
 export async function GET() {
   try {

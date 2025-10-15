@@ -1,12 +1,12 @@
 // src/app/api/admin/manage/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { PrismaClient } from '@/generated/prisma';
+import { getPrismaClient } from '@/lib/prisma';
 import { getSession } from '@/lib/auth';
 import bcrypt from 'bcryptjs';
 
 export const runtime = 'nodejs';
 
-const prisma = new PrismaClient();
+const prisma = getPrismaClient();
 
 // Get all admins
 export async function GET(request: NextRequest) {

@@ -1,11 +1,11 @@
 // src/app/api/orders/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { PrismaClient } from '@/generated/prisma';
+import { getPrismaClient } from '@/lib/prisma';
 import { sendOrderConfirmation, sendAdminOrderNotification } from '@/lib/email';
 
 export const runtime = 'nodejs';
 
-const prisma = new PrismaClient();
+const prisma = getPrismaClient();
 
 // Generate order number
 function generateOrderNumber() {

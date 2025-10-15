@@ -1,11 +1,11 @@
 // src/app/api/admin/login/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { PrismaClient } from '@/generated/prisma';
+import { getPrismaClient } from '@/lib/prisma';
 import { createSession, verifyPassword } from '@/lib/auth';
 
 export const runtime = 'nodejs';
 
-const prisma = new PrismaClient();
+const prisma = getPrismaClient();
 
 export async function POST(request: NextRequest) {
   try {

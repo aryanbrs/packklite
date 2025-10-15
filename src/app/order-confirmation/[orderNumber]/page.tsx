@@ -1,12 +1,12 @@
 // src/app/order-confirmation/[orderNumber]/page.tsx
 import Link from 'next/link';
 import { CheckCircle, Package, Phone, Mail, MapPin } from 'lucide-react';
-import { PrismaClient } from '@/generated/prisma';
+import { getPrismaClient } from '@/lib/prisma';
 import { redirect } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
-const prisma = new PrismaClient();
+const prisma = getPrismaClient();
 
 export default async function OrderConfirmationPage({ params }: { params: { orderNumber: string } }) {
   const order = await prisma.order.findUnique({

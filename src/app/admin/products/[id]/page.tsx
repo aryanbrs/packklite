@@ -1,13 +1,13 @@
 // src/app/admin/products/[id]/page.tsx
 import { redirect } from 'next/navigation';
 import { getSession } from '@/lib/auth';
-import { PrismaClient } from '@/generated/prisma';
+import { getPrismaClient } from '@/lib/prisma';
 import AdminLayout from '@/components/AdminLayout';
 import ProductForm from '@/components/ProductForm';
 
 export const dynamic = 'force-dynamic';
 
-const prisma = new PrismaClient();
+const prisma = getPrismaClient();
 
 export default async function EditProductPage({ params }: { params: { id: string } }) {
   const session = await getSession();
