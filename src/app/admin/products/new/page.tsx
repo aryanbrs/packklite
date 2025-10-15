@@ -4,6 +4,8 @@ import { getSession } from '@/lib/auth';
 import AdminLayout from '@/components/AdminLayout';
 import ProductForm from '@/components/ProductForm';
 
+export const dynamic = 'force-dynamic';
+
 export default async function NewProductPage() {
   const session = await getSession();
 

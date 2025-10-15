@@ -4,6 +4,8 @@ import { getSession } from '@/lib/auth';
 import AdminLayout from '@/components/AdminLayout';
 import AdminSettingsForm from '@/components/AdminSettingsForm';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminSettingsPage() {
   const session = await getSession();
 
