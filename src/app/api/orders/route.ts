@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@/generated/prisma';
 import { sendOrderConfirmation, sendAdminOrderNotification } from '@/lib/email';
 
+export const runtime = 'nodejs';
+
 const prisma = new PrismaClient();
 
 // Generate order number

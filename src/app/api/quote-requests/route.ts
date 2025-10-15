@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@/generated/prisma';
 import { sendQuoteConfirmation, sendAdminQuoteNotification } from '@/lib/email';
 
+export const runtime = 'nodejs';
+
 const prisma = new PrismaClient();
 
 export async function POST(request: NextRequest) {

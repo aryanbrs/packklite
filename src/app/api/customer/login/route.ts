@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@/generated/prisma';
 import { createCustomerSession, verifyPassword } from '@/lib/customer-auth';
 
+export const runtime = 'nodejs';
+
 const prisma = new PrismaClient();
 
 export async function POST(request: NextRequest) {

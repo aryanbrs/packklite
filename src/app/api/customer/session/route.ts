@@ -3,6 +3,8 @@ import { NextResponse } from 'next/server';
 import { getCustomerSession } from '@/lib/customer-auth';
 import { PrismaClient } from '@/generated/prisma';
 
+export const runtime = 'nodejs';
+
 const prisma = new PrismaClient();
 
 export async function GET() {

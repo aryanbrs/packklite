@@ -4,6 +4,8 @@ import { PrismaClient } from '@/generated/prisma';
 import { getSession } from '@/lib/auth';
 import bcrypt from 'bcryptjs';
 
+export const runtime = 'nodejs';
+
 const prisma = new PrismaClient();
 
 // Get all admins

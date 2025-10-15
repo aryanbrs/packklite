@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@/generated/prisma';
 import { getSession } from '@/lib/auth';
 
+export const runtime = 'nodejs';
+
 const prisma = new PrismaClient();
 
 // GET single product

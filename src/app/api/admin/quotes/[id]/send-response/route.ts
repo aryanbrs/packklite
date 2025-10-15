@@ -4,6 +4,8 @@ import { PrismaClient } from '@/generated/prisma';
 import { getSession } from '@/lib/auth';
 import { sendQuoteResponse } from '@/lib/email';
 
+export const runtime = 'nodejs';
+
 const prisma = new PrismaClient();
 
 export async function POST(

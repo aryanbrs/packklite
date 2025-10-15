@@ -1,6 +1,8 @@
 // src/app/api/products/route.ts
 import { PrismaClient } from '@prisma/client';
 
+export const runtime = 'nodejs';
+
 // Initialize a single instance of Prisma Client
 const prisma = new PrismaClient();
 
