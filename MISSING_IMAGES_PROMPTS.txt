@@ -1,0 +1,179 @@
+═══════════════════════════════════════════════════════════════════════════
+MISSING PRODUCT IMAGES - AI GENERATION PROMPTS
+═══════════════════════════════════════════════════════════════════════════
+
+📂 SAVE ALL TO: public/images/
+⚙️ FORMAT: JPG (1000x1000px, square)
+🎨 STYLE: Professional product photography, white background
+
+═══════════════════════════════════════════════════════════════════════════
+1️⃣ BROWN 5-PLY UNIVERSAL BOX (NEEDS FIXING)
+═══════════════════════════════════════════════════════════════════════════
+
+❌ CURRENT: Shows mailer box (wrong)
+✅ NEEDED: Heavy-duty 5-ply universal box
+
+FILE NAME: universal_box_brown_5ply.jpg
+LOCATION: public/images/universal_box_brown_5ply.jpg
+
+AI PROMPT:
+─────────────────────────────────────────────────────────────────────────
+Professional product photography of a heavy-duty brown corrugated cardboard box, 5-ply thickness. The box is a standard rectangular universal shipping box with visible thick walls showing the sturdy 5-ply construction. Box is closed and sealed with flaps folded on top. Positioned at 45-degree angle to show three sides (front, top, right). The box appears sturdy and robust with thick cardboard edges visible. Clean pure white studio background with subtle drop shadow beneath. Pristine new condition showing high-quality brown kraft paper. The corrugation texture is visible on the edges showing 5 layers. Soft professional lighting from top-left. Photorealistic commercial product photography style. Square format 1:1, 1000x1000 pixels.
+─────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════
+2️⃣ PIZZA BOX (FLIP-TOP STYLE)
+═══════════════════════════════════════════════════════════════════════════
+
+❌ CURRENT: Shows regular cube box (wrong)
+✅ NEEDED: Pizza-style flip-top box (clamshell opening)
+
+FILE NAME: pizza_box_style.jpg
+LOCATION: public/images/pizza_box_style.jpg
+
+AI PROMPT:
+─────────────────────────────────────────────────────────────────────────
+Professional product photography of a brown corrugated pizza-style box with flip-top clamshell opening. The box is rectangular and flat with the characteristic pizza box design where the top lid opens upward like a clamshell or flip-top. Box is shown closed at a slight angle to display the hinged opening style. 3-ply brown kraft corrugated cardboard. The box has a clean, flat profile typical of pizza boxes or document boxes. Clean pure white studio background with subtle drop shadow. Pristine new condition. The hinge/fold line is visible where the top opens. Soft professional lighting from top-left creating gentle shadows. Photorealistic commercial product photography style. Square format 1:1, 1000x1000 pixels.
+─────────────────────────────────────────────────────────────────────────
+
+ALTERNATE NAME: corrugated_flip_top_box.jpg (if "pizza" is confusing)
+
+═══════════════════════════════════════════════════════════════════════════
+3️⃣ CUSTOM PRINTED/BRANDED TAPE
+═══════════════════════════════════════════════════════════════════════════
+
+✅ NEEDED: Tape with custom branding/logo printed on it
+
+FILE NAME: custom_branded_tape.jpg
+LOCATION: public/images/custom_branded_tape.jpg
+
+AI PROMPT:
+─────────────────────────────────────────────────────────────────────────
+Professional product photography of brown packaging tape roll with custom logo/text printed on it. The tape roll is shown at an angle with some tape pulled out and curling naturally to display the printed branding pattern. The tape has black text or logo printed repeatedly along its length (generic company name like "BRAND" or simple logo pattern). The tape is glossy BOPP material in brown color with clear printed text visible. Tape dispenser is optional. Clean pure white studio background with subtle drop shadow. Pristine new tape roll. The printing on the tape is sharp and professional looking. Soft professional lighting highlighting the printed text. Photorealistic commercial product photography style. Square format 1:1, 1000x1000 pixels.
+─────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════
+4️⃣ THERMOCOL JAR PACKAGING (500ml)
+═══════════════════════════════════════════════════════════════════════════
+
+✅ NEEDED: Pre-formed thermocol jar packaging insert
+
+FILE NAME: thermocol_jar_packaging.jpg
+LOCATION: public/images/thermocol_jar_packaging.jpg
+
+AI PROMPT:
+─────────────────────────────────────────────────────────────────────────
+Professional product photography of white thermocol (EPS foam) jar packaging inserts. Shows cylindrical pre-formed thermocol packaging designed to hold 500ml glass jars. The thermocol pieces are molded with circular cavities/indentations to securely hold jars. White expanded polystyrene material with characteristic foam texture and beaded surface visible. Multiple pieces shown - some stacked, one standing to show the jar-holding cavity clearly. The circular cavity is prominent showing it's designed for cylindrical jars. Clean pure white studio background with subtle shadows. Pristine white thermocol material. Soft professional lighting highlighting the foam texture and molded shape. Photorealistic commercial product photography style. Square format 1:1, 1000x1000 pixels.
+─────────────────────────────────────────────────────────────────────────
+
+ALTERNATE DESCRIPTION: 
+"Molded thermocol jar holders" or "cylindrical thermocol packaging inserts"
+
+═══════════════════════════════════════════════════════════════════════════
+5️⃣ EPE FOAM JAR PACKAGING (500ml)
+═══════════════════════════════════════════════════════════════════════════
+
+✅ NEEDED: EPE foam jar packaging insert/wrap
+
+FILE NAME: epe_foam_jar_packaging.jpg
+LOCATION: public/images/epe_foam_jar_packaging.jpg
+
+AI PROMPT:
+─────────────────────────────────────────────────────────────────────────
+Professional product photography of white EPE (Expanded Polyethylene) foam jar packaging. Shows cylindrical EPE foam sleeve or insert designed to protect 500ml jars. The EPE foam is white with characteristic closed-cell foam texture, smooth surface with slight sheen. The foam piece is tubular/cylindrical shaped to wrap around or hold jars securely. Shows the foam's cushiony, resilient nature. May show cross-section to display hollow center for jar insertion. Clean pure white studio background with subtle shadows. Pristine white EPE foam material looking soft and protective. Soft professional lighting highlighting the foam's texture and cylindrical shape. Photorealistic commercial product photography style. Square format 1:1, 1000x1000 pixels.
+─────────────────────────────────────────────────────────────────────────
+
+ALTERNATE DESCRIPTION:
+"Cylindrical EPE foam protective sleeves for jar packaging"
+
+═══════════════════════════════════════════════════════════════════════════
+QUICK GENERATION CHECKLIST
+═══════════════════════════════════════════════════════════════════════════
+
+Generate these 5 images:
+[ ] universal_box_brown_5ply.jpg (Fix wrong image)
+[ ] pizza_box_style.jpg (New - flip-top style)
+[ ] custom_branded_tape.jpg (New - printed tape)
+[ ] thermocol_jar_packaging.jpg (New - jar holders)
+[ ] epe_foam_jar_packaging.jpg (New - foam jar wraps)
+
+Save all to: public/images/
+
+═══════════════════════════════════════════════════════════════════════════
+AFTER GENERATING IMAGES
+═══════════════════════════════════════════════════════════════════════════
+
+1️⃣ Save images to public/images/ folder
+
+2️⃣ Update database via Admin Panel:
+   - Login to: http://localhost:3000/admin
+   - Go to product edit
+   - Update image URL to: /images/[filename].jpg
+
+3️⃣ Or run SQL update (if needed):
+   ```sql
+   -- Brown 5-Ply Universal Boxes
+   UPDATE "Product" 
+   SET "imageUrl" = '/images/universal_box_brown_5ply.jpg'
+   WHERE name LIKE '%Brown 5-Ply Universal%';
+
+   -- Pizza Boxes
+   UPDATE "Product" 
+   SET "imageUrl" = '/images/pizza_box_style.jpg'
+   WHERE name LIKE '%Pizza Box%';
+
+   -- Custom Branded Tape
+   UPDATE "Product" 
+   SET "imageUrl" = '/images/custom_branded_tape.jpg'
+   WHERE name LIKE '%Custom Printed%Tape%' OR name LIKE '%Branded Tape%';
+
+   -- Thermocol JAR
+   UPDATE "Product" 
+   SET "imageUrl" = '/images/thermocol_jar_packaging.jpg'
+   WHERE name LIKE '%Thermocol JAR%';
+
+   -- EPE Foam JAR
+   UPDATE "Product" 
+   SET "imageUrl" = '/images/epe_foam_jar_packaging.jpg'
+   WHERE name LIKE '%EPE Foam JAR%';
+   ```
+
+4️⃣ Restart dev server: npm run dev
+
+5️⃣ Test: http://localhost:3000/products
+
+═══════════════════════════════════════════════════════════════════════════
+TIPS FOR BETTER RESULTS
+═══════════════════════════════════════════════════════════════════════════
+
+✅ Use DALL-E 3 (via ChatGPT Plus or Bing Image Creator) for best quality
+✅ Generate in square format (1:1 aspect ratio)
+✅ Emphasize "white background" and "product photography"
+✅ If result isn't perfect, try adding:
+   - "studio lighting"
+   - "commercial photography"
+   - "e-commerce product image"
+✅ Remove any watermarks or unwanted text
+✅ Resize to exactly 1000x1000px if needed
+✅ Compress to <150KB using TinyPNG or Squoosh
+
+═══════════════════════════════════════════════════════════════════════════
+ADMIN PANEL IMAGE MANAGEMENT
+═══════════════════════════════════════════════════════════════════════════
+
+Current: Admin can only add image URL (text input)
+
+✅ This is actually GOOD because:
+- Simple and flexible
+- No file upload storage needed
+- Can use any image hosting (CDN, cloud storage)
+- Images in public/images/ work perfectly
+
+To use images:
+1. Save image to: public/images/filename.jpg
+2. In admin panel, enter: /images/filename.jpg
+3. Next.js automatically serves from public/ folder
+
+NO CHANGES NEEDED - Current system works well! ✅
+
+═══════════════════════════════════════════════════════════════════════════
