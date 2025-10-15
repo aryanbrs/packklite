@@ -4,6 +4,8 @@ import { getCustomerSession } from '@/lib/customer-auth';
 import { PrismaClient } from '@/generated/prisma';
 import CustomerDashboard from '@/components/CustomerDashboard';
 
+export const dynamic = 'force-dynamic';
+
 const prisma = new PrismaClient();
 
 export default async function CustomerDashboardPage() {

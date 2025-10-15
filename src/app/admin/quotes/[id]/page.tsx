@@ -4,6 +4,8 @@ import { getSession } from '@/lib/auth';
 import { PrismaClient } from '@/generated/prisma';
 import QuoteDetail from '@/components/QuoteDetail';
 
+export const dynamic = 'force-dynamic';
+
 const prisma = new PrismaClient();
 
 export default async function QuoteDetailPage({ params }: { params: { id: string } }) {

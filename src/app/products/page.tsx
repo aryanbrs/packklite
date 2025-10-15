@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   description: 'Browse our wide range of packaging materials. Corrugated boxes, mailer boxes, bubble wrap, tapes, and more.',
 };
 
+export const dynamic = 'force-dynamic';
+
 const prisma = new PrismaClient();
 
 export default async function ProductsPage() {

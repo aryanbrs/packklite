@@ -4,6 +4,8 @@ import { CheckCircle, Package, Phone, Mail, MapPin } from 'lucide-react';
 import { PrismaClient } from '@/generated/prisma';
 import { redirect } from 'next/navigation';
 
+export const dynamic = 'force-dynamic';
+
 const prisma = new PrismaClient();
 
 export default async function OrderConfirmationPage({ params }: { params: { orderNumber: string } }) {

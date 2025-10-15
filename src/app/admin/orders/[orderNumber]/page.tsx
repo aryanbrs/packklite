@@ -4,6 +4,8 @@ import { getSession } from '@/lib/auth';
 import { PrismaClient } from '@/generated/prisma';
 import OrderDetail from '@/components/OrderDetail';
 
+export const dynamic = 'force-dynamic';
+
 const prisma = new PrismaClient();
 
 export default async function OrderDetailPage({ params }: { params: { orderNumber: string } }) {

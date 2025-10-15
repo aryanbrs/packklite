@@ -5,6 +5,8 @@ import { PrismaClient } from '@/generated/prisma';
 import AdminLayout from '@/components/AdminLayout';
 import OrdersList from '@/components/OrdersList';
 
+export const dynamic = 'force-dynamic';
+
 const prisma = new PrismaClient();
 
 export default async function AdminOrdersPage() {
