@@ -1,7 +1,8 @@
 // src/app/checkout/page.tsx
 'use client';
-export const dynamic = 'force-dynamic';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0; 
 
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
