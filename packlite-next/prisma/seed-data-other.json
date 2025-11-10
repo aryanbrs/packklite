@@ -1,0 +1,319 @@
+[
+  {
+    "productCode": "PZ-BR-3P",
+    "category": "Pizza Boxes",
+    "name": "Brown 3-Ply Corrugated Pizza Boxes",
+    "description": "Standard die-cut 3-ply brown pizza boxes, perfect for takeaways and deliveries.",
+    "imageUrl": "/images/pizza-box.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "PZ-BR-3P-7x7x1.75", "size": "7in x 7in x 1.75in", "basePrice": 6.80},
+      {"sku": "PZ-BR-3P-8x8x1.75", "size": "8in x 8in x 1.75in", "basePrice": 8.80},
+      {"sku": "PZ-BR-3P-10x10x1.75", "size": "10in x 10in x 1.75in", "basePrice": 11.20},
+      {"sku": "PZ-BR-3P-12x12x1.75", "size": "12in x 12in x 1.75in", "basePrice": 14.40},
+      {"sku": "PZ-BR-3P-14x14x2", "size": "14in x 14in x 2in", "basePrice": 18.40}
+    ]
+  },
+  {
+    "productCode": "PP-BUBBLE",
+    "category": "Protective Packaging",
+    "name": "Bubble Wrap Roll 1m Width",
+    "description": "Bubble wrap for cushioning, 1m width.",
+    "imageUrl": "/images/bubble-wrap.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "PP-BUBBLE-1x100", "size": "1m x 100m", "basePrice": 1300.00}
+    ]
+  },
+  {
+    "productCode": "PP-STRETCH",
+    "category": "Protective Packaging",
+    "name": "Stretch Film Roll",
+    "description": "Durable stretch film for pallet wrapping and load stabilization.",
+    "imageUrl": "/images/stretch-film.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "PP-STRETCH-50x300", "size": "Standard (50cm x 300m)", "basePrice": 400.00}
+    ]
+  },
+  {
+    "productCode": "TAPE-BOPP-1x50",
+    "category": "Tapes & Adhesives",
+    "name": "BOPP Tape 1in x 50m",
+    "description": "BOPP packaging tape, 1 inch width, 50 meters length. Price per roll (Sold in packs of 6).",
+    "imageUrl": "/images/bopp-tape.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "TAPE-BOPP-1x50-T", "size": "1in x 50m, Transparent", "basePrice": 43.33},
+      {"sku": "TAPE-BOPP-1x50-B", "size": "1in x 50m, Brown", "basePrice": 43.33}
+    ]
+  },
+  {
+    "productCode": "TAPE-BOPP-2x65",
+    "category": "Tapes & Adhesives",
+    "name": "BOPP Tape 2in x 65m",
+    "description": "BOPP packaging tape, 2 inch width, 65 meters length. Price per roll (Sold in boxes of 72).",
+    "imageUrl": "/images/bopp-tape.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "TAPE-BOPP-2x65-T", "size": "2in x 65m, Transparent", "basePrice": 22.57},
+      {"sku": "TAPE-BOPP-2x65-B", "size": "2in x 65m, Brown", "basePrice": 22.57}
+    ]
+  },
+  {
+    "productCode": "TAPE-BOPP-2x100",
+    "category": "Tapes & Adhesives",
+    "name": "BOPP Tape 2in x 100m",
+    "description": "BOPP packaging tape, 2 inch width, 100 meters length. Price per roll (Sold in packs of 6).",
+    "imageUrl": "/images/bopp-tape.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "TAPE-BOPP-2x100-T", "size": "2in x 100m, Transparent", "basePrice": 75.00},
+      {"sku": "TAPE-BOPP-2x100-B", "size": "2in x 100m, Brown", "basePrice": 75.00}
+    ]
+  },
+  {
+    "productCode": "TAPE-BOPP-3x50",
+    "category": "Tapes & Adhesives",
+    "name": "BOPP Tape 3in x 50m",
+    "description": "BOPP packaging tape, 3 inch width, 50 meters length. Price per roll (Sold in boxes of 48).",
+    "imageUrl": "/images/bopp-tape.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "TAPE-BOPP-3x50-T", "size": "3in x 50m, Transparent", "basePrice": 26.04},
+      {"sku": "TAPE-BOPP-3x50-B", "size": "3in x 50m, Brown", "basePrice": 26.04}
+    ]
+  },
+  {
+    "productCode": "TAPE-BOPP-3x100",
+    "category": "Tapes & Adhesives",
+    "name": "BOPP Tape 3in x 100m",
+    "description": "BOPP packaging tape, 3 inch width, 100 meters length. Price per roll (Sold in packs of 4).",
+    "imageUrl": "/images/bopp-tape.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "TAPE-BOPP-3x100-T", "size": "3in x 100m, Transparent", "basePrice": 122.50},
+      {"sku": "TAPE-BOPP-3x100-B", "size": "3in x 100m, Brown", "basePrice": 122.50}
+    ]
+  },
+  {
+    "productCode": "TAPE-SPECIALTY",
+    "category": "Tapes & Adhesives",
+    "name": "Specialty High Tape",
+    "description": "High-strength specialty adhesive tape.",
+    "imageUrl": "/images/specialty-tape.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "TAPE-SPECIALTY-1-3MM", "size": "1-3mm thick (length varies)", "basePrice": 125.00}
+    ]
+  },
+  {
+    "productCode": "TAPE-CUSTOM",
+    "category": "Tapes & Adhesives",
+    "name": "Custom Printed / Branded Tapes",
+    "description": "Custom printed packaging tapes.",
+    "imageUrl": "/images/custom-tape.jpg",
+    "isCustomInquiry": true,
+    "variants": [
+      {"sku": "TAPE-CUSTOM-QUOTE", "size": "Custom Size & Print", "basePrice": 0.00}
+    ]
+  },
+  {
+    "productCode": "TC-JAR-500",
+    "category": "Thermocol & Foam",
+    "name": "Thermocol JAR Packaging - 500ml",
+    "description": "Pre-formed thermocol packaging for 500ml jars.",
+    "imageUrl": "/images/thermocol-jar.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "TC-JAR-500", "size": "For 500ml Jar", "basePrice": 15.00}
+    ]
+  },
+  {
+    "productCode": "TC-JAR-1000",
+    "category": "Thermocol & Foam",
+    "name": "Thermocol JAR Packaging - 1000ml",
+    "description": "Pre-formed thermocol packaging for 1000ml jars.",
+    "imageUrl": "/images/thermocol-jar.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "TC-JAR-1000", "size": "For 1000ml Jar", "basePrice": 25.00}
+    ]
+  },
+  {
+    "productCode": "TC-SHEET-19x11-15",
+    "category": "Thermocol & Foam",
+    "name": "Thermocol Sheet 19x11in, 15mm",
+    "description": "Thermocol sheets (EPS), 19in x 11in, 15mm thick. Price per sheet (Sold in packs of 6).",
+    "imageUrl": "/images/thermocol-sheet.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "TC-SHEET-19x11-15", "size": "19in x 11in, 15mm thick", "basePrice": 70.33}
+    ]
+  },
+  {
+    "productCode": "TC-SHEET-10x13-15",
+    "category": "Thermocol & Foam",
+    "name": "Thermocol Sheet 10x13in, 15mm (Premium)",
+    "description": "Premium density thermocol sheets (EPS), 10in x 13in, 15mm thick. Price per sheet (Sold in packs of 6).",
+    "imageUrl": "/images/thermocol-sheet.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "TC-SHEET-10x13-15", "size": "10in x 13in, 15mm thick", "basePrice": 29.67}
+    ]
+  },
+  {
+    "productCode": "TC-SHEET-50x20-ECO",
+    "category": "Thermocol & Foam",
+    "name": "Thermocol Sheet 50x20in (Economy)",
+    "description": "Economical thermocol sheets, 50in x 20in. Thickness may vary.",
+    "imageUrl": "/images/thermocol-sheet.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "TC-SHEET-50x20-ECO", "size": "50in x 20in (thickness varies)", "basePrice": 30.00}
+    ]
+  },
+  {
+    "productCode": "TC-SHEET-40x40-BULK",
+    "category": "Thermocol & Foam",
+    "name": "Thermocol Sheets 40x40in (Bulk)",
+    "description": "Bulk thermocol sheets, 40x40in (25-75mm thick). Price per block. Inquire for quote.",
+    "imageUrl": "/images/thermocol-sheet.jpg",
+    "isCustomInquiry": true,
+    "variants": [
+      {"sku": "TC-SHEET-40x40-BULK", "size": "40x40in (25-75mm thick)", "basePrice": 0.00}
+    ]
+  },
+  {
+    "productCode": "EPE-JAR-500",
+    "category": "Thermocol & Foam",
+    "name": "EPE Foam JAR Packaging - 500ml",
+    "description": "Resilient EPE foam packaging for 500ml jars.",
+    "imageUrl": "/images/epe-foam-jar.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "EPE-JAR-500", "size": "For 500ml Jar", "basePrice": 20.00}
+    ]
+  },
+  {
+    "productCode": "EPE-JAR-1000",
+    "category": "Thermocol & Foam",
+    "name": "EPE Foam JAR Packaging - 1000ml",
+    "description": "Resilient EPE foam packaging for 1000ml jars.",
+    "imageUrl": "/images/epe-foam-jar.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "EPE-JAR-1000", "size": "For 1000ml Jar", "basePrice": 30.00}
+    ]
+  },
+  {
+    "productCode": "EPE-SHEET-1x1-10",
+    "category": "Thermocol & Foam",
+    "name": "EPE Foam Sheet 1x1ft, 10mm",
+    "description": "Flexible EPE foam sheets, 1ft x 1ft, 10mm thick. Price per sheet (Sold in packs of 5).",
+    "imageUrl": "/images/epe-foam-sheet.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "EPE-SHEET-1x1-10", "size": "1ft x 1ft, 10mm thick", "basePrice": 56.20}
+    ]
+  },
+  {
+    "productCode": "EPE-SHEET-2x1-10",
+    "category": "Thermocol & Foam",
+    "name": "EPE Foam Sheet 2x1ft, 10mm",
+    "description": "Flexible EPE foam sheets, 2ft x 1ft, 10mm thick. Price per sheet (Sold in packs of 5).",
+    "imageUrl": "/images/epe-foam-sheet.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "EPE-SHEET-2x1-10", "size": "2ft x 1ft, 10mm thick", "basePrice": 93.60}
+    ]
+  },
+  {
+    "productCode": "EPE-SHEET-2x3-10",
+    "category": "Thermocol & Foam",
+    "name": "EPE Foam Sheet 2x3ft, 10mm",
+    "description": "Flexible EPE foam sheets, 2ft x 3ft, 10mm thick. Price per sheet (Sold in packs of 3).",
+    "imageUrl": "/images/epe-foam-sheet.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "EPE-SHEET-2x3-10", "size": "2ft x 3ft, 10mm thick", "basePrice": 137.00}
+    ]
+  },
+  {
+    "productCode": "EPE-SHEET-2x5-10",
+    "category": "Thermocol & Foam",
+    "name": "EPE Foam Sheet 2x5ft, 10mm",
+    "description": "Flexible EPE foam sheets, 2ft x 5ft, 10mm thick. Price per sheet (Sold in packs of 2).",
+    "imageUrl": "/images/epe-foam-sheet.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "EPE-SHEET-2x5-10", "size": "2ft x 5ft, 10mm thick", "basePrice": 228.50}
+    ]
+  },
+  {
+    "productCode": "EPE-SHEET-1x5-20",
+    "category": "Thermocol & Foam",
+    "name": "EPE Foam Sheet 1x5ft, 20mm",
+    "description": "Thicker EPE foam sheets, 1ft x 5ft, 20mm thick. Price per sheet (Sold in packs of 2).",
+    "imageUrl": "/images/epe-foam-sheet.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "EPE-SHEET-1x5-20", "size": "1ft x 5ft, 20mm thick", "basePrice": 228.50}
+    ]
+  },
+  {
+    "productCode": "EPE-SHEET-1x1-20",
+    "category": "Thermocol & Foam",
+    "name": "EPE Foam Sheet 1x1ft, 20mm (Black/White)",
+    "description": "EPE foam sheets, 1ft x 1ft, 20mm thick. Available in black or white.",
+    "imageUrl": "/images/epe-foam-sheet.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "EPE-SHEET-1x1-20", "size": "1ft x 1ft, 20mm thick (Black/White)", "basePrice": 30.00}
+    ]
+  },
+  {
+    "productCode": "EPE-SHEET-2x2-20",
+    "category": "Thermocol & Foam",
+    "name": "EPE Foam Sheet 2x2ft, 20mm",
+    "description": "EPE foam sheets for larger items, 2ft x 2ft, 20mm thick.",
+    "imageUrl": "/images/epe-foam-sheet.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "EPE-SHEET-2x2-20", "size": "2ft x 2ft, 20mm thick", "basePrice": 120.00}
+    ]
+  },
+  {
+    "productCode": "EPE-SHEET-3x3-20",
+    "category": "Thermocol & Foam",
+    "name": "EPE Foam Sheet 3x3ft, 20mm",
+    "description": "EPE foam sheets for bulk packaging, 3ft x 3ft, 20mm thick.",
+    "imageUrl": "/images/epe-foam-sheet.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "EPE-SHEET-3x3-20", "size": "3ft x 3ft, 20mm thick", "basePrice": 270.00}
+    ]
+  },
+  {
+    "productCode": "EPE-SHEET-4x4-20",
+    "category": "Thermocol & Foam",
+    "name": "EPE Foam Sheet 4x4ft, 20mm",
+    "description": "Industrial use EPE foam sheets, 4ft x 4ft, 20mm thick.",
+    "imageUrl": "/images/epe-foam-sheet.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "EPE-SHEET-4x4-20", "size": "4ft x 4ft, 20mm thick", "basePrice": 490.00}
+    ]
+  },
+  {
+    "productCode": "EPE-SHEET-5x5-20",
+    "category": "Thermocol & Foam",
+    "name": "EPE Foam Sheet 5x5ft, 20mm",
+    "description": "Heavy-duty EPE foam sheets, 5ft x 5ft, 20mm thick.",
+    "imageUrl": "/images/epe-foam-sheet.jpg",
+    "isCustomInquiry": false,
+    "variants": [
+      {"sku": "EPE-SHEET-5x5-20", "size": "5ft x 5ft, 20mm thick", "basePrice": 780.00}
+    ]
+  }
+]
