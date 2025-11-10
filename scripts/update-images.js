@@ -1,7 +1,8 @@
 // Script to update product images in database
 // Run with: node scripts/update-images.js
 
-const { PrismaClient } = require('../src/generated/prisma');
+const { PrismaClient } = require('../@prisma/client
+');
 const prisma = new PrismaClient();
 
 const imageUpdates = [

@@ -13,7 +13,6 @@
     "seed": "ts-node --project tsconfig.seed.json prisma/seed.ts"
   },
   "dependencies": {
-    "@prisma/client": "^5.15.0",
     "bcryptjs": "^3.0.2",
     "jose": "^6.1.0",
     "lucide-react": "^0.395.0",
@@ -23,6 +22,7 @@
     "resend": "^6.1.2"
   },
   "devDependencies": {
+    "@prisma/client": "^5.15.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
