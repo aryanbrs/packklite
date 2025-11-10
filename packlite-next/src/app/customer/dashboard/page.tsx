@@ -2,12 +2,13 @@
 
 import { redirect } from 'next/navigation';
 import { getCustomerSession } from '@/lib/customer-auth';
-import { getPrismaClient } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
+
 import CustomerDashboard from '@/components/CustomerDashboard';
 
 export const dynamic = 'force-dynamic';
 
-const prisma = getPrismaClient();
+ 
 
 export default async function CustomerDashboardPage() {
   const session = await getCustomerSession();

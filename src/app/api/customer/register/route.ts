@@ -1,11 +1,12 @@
 // src/app/api/customer/register/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { getPrismaClient } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
+
 import { createCustomerSession, hashPassword } from '@/lib/customer-auth';
 
 export const runtime = 'nodejs';
 
-const prisma = getPrismaClient();
+ 
 
 export async function POST(request: NextRequest) {
   try {

@@ -1,11 +1,12 @@
 // src/app/api/admin/quotes/[id]/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { getPrismaClient } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
+
 import { getSession } from '@/lib/auth';
 
 export const runtime = 'nodejs';
 
-const prisma = getPrismaClient();
+ 
 
 // GET single quote
 export async function GET(

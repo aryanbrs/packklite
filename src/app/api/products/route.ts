@@ -1,10 +1,11 @@
 // src/app/api/products/route.ts
-import { getPrismaClient } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
+
 
 export const runtime = 'nodejs';
 
 // Initialize a single instance of Prisma Client
-const prisma = getPrismaClient();
+ 
 
 export async function GET(request: Request) {
   try {

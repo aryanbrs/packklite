@@ -1,11 +1,12 @@
 // src/app/api/quote-requests/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { getPrismaClient } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
+
 import { sendQuoteConfirmation, sendAdminQuoteNotification } from '@/lib/email';
 
 export const runtime = 'nodejs';
 
-const prisma = getPrismaClient();
+ 
 
 export async function POST(request: NextRequest) {
   try {

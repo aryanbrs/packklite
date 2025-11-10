@@ -1,12 +1,13 @@
 // src/app/api/admin/update-password/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { getPrismaClient } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
+
 import { getSession } from '@/lib/auth';
 import bcrypt from 'bcryptjs';
 
 export const runtime = 'nodejs';
 
-const prisma = getPrismaClient();
+ 
 
 export async function POST(request: NextRequest) {
   try {

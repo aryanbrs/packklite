@@ -1,11 +1,12 @@
 // src/app/api/admin/products/[id]/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { getPrismaClient } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
+
 import { getSession } from '@/lib/auth';
 
 export const runtime = 'nodejs';
 
-const prisma = getPrismaClient();
+ 
 
 // GET single product
 export async function GET(

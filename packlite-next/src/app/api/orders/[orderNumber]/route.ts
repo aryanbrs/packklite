@@ -1,11 +1,14 @@
 // src/app/api/orders/[orderNumber]/route.ts
+export const dynamic = 'force-dynamic';
+
 import { NextRequest, NextResponse } from 'next/server';
-import { getPrismaClient } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
+
 import { getSession } from '@/lib/auth';
 
 export const runtime = 'nodejs';
 
-const prisma = getPrismaClient();
+ 
 
 // GET single order
 export async function GET(

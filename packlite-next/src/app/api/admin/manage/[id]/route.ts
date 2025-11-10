@@ -1,12 +1,13 @@
 // src/app/api/admin/manage/[id]/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { getPrismaClient } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
+
 import { getSession } from '@/lib/auth';
 import bcrypt from 'bcryptjs';
 
 export const runtime = 'nodejs';
 
-const prisma = getPrismaClient();
+ 
 
 // Update admin
 export async function PATCH(

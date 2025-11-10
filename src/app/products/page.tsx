@@ -2,7 +2,8 @@
 import { Metadata } from 'next';
 import ProductCard from '@/components/ProductCard';
 import ProductNav from '@/components/ProductNav';
-import { getPrismaClient } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
+
 
 export const metadata: Metadata = {
   title: 'Our Products - Packlite | Ariv Packlite Pvt Ltd',
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 
 export const dynamic = 'force-dynamic';
 
-const prisma = getPrismaClient();
+ 
 
 export default async function ProductsPage() {
   // Fetch products from database

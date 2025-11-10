@@ -1,13 +1,14 @@
 // src/app/admin/orders/page.tsx
 import { redirect } from 'next/navigation';
 import { getSession } from '@/lib/auth';
-import { getPrismaClient } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
+
 import AdminLayout from '@/components/AdminLayout';
 import OrdersList from '@/components/OrdersList';
 
 export const dynamic = 'force-dynamic';
 
-const prisma = getPrismaClient();
+ 
 
 export default async function AdminOrdersPage() {
   const session = await getSession();
