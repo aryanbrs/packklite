@@ -13,4 +13,4 @@ export function getPrismaClient(): PrismaClient {
 }
 
 // Export for compatibility
-export const prisma = getPrismaClient();
+export  

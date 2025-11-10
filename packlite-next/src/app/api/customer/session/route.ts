@@ -1,11 +1,14 @@
 // src/app/api/customer/session/route.ts
+export const dynamic = 'force-dynamic';
+
 import { NextResponse } from 'next/server';
 import { getCustomerSession } from '@/lib/customer-auth';
-import { getPrismaClient } from '@/lib/prisma';
+import prisma from '@/lib/prisma';
+
 
 export const runtime = 'nodejs';
 
-const prisma = getPrismaClient();
+ 
 
 export async function GET() {
   try {
