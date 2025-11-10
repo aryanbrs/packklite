@@ -1,4 +1,6 @@
 // src/app/api/quote-requests/route.ts
+export const dynamic = 'force-dynamic';
+
 import { NextRequest, NextResponse } from 'next/server';
 import { getPrismaClient } from '@/lib/prisma';
 import { sendQuoteConfirmation, sendAdminQuoteNotification } from '@/lib/email';
