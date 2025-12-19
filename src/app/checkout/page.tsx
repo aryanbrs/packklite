@@ -1,13 +1,13 @@
 // src/app/checkout/page.tsx
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCart, calculateDiscount } from '@/contexts/CartContext';
 import { MapPin, Package, CreditCard, AlertCircle, User } from 'lucide-react';
 import Link from 'next/link';
 
-export default function CheckoutPage() {
+function CheckoutPageInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { items, subtotal, clearCart } = useCart();
@@ -416,5 +416,22 @@ export default function CheckoutPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function CheckoutPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading...</p>
+          </div>
+        </div>
+      }
+    >
+      <CheckoutPageInner />
+    </Suspense>
   );
 }

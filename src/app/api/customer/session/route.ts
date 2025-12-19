@@ -4,6 +4,7 @@ import { getCustomerSession } from '@/lib/customer-auth';
 import { getPrismaClient } from '@/lib/prisma';
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 const prisma = getPrismaClient();
 
