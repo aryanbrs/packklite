@@ -1,0 +1,67 @@
+/* src/app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #28a745;
+  --dark-color: #343a40;
+  --light-color: #f8f9fa;
+  --medium-gray: #6c757d;
+  --light-gray: #e9ecef;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --success-color: #28a745;
+  
+  --border-radius: 5px;
+  --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --transition-speed: 0.3s ease;
+}
+
+body {
+  color: var(--dark-color);
+  background: white;
+}
+
+/* src/app/globals.css (add to end) */
+
+/* Utility to hide scrollbars */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Toast Animations */
+@keyframes slideInRight {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.3s ease-out;
+}
+
+.animate-slideOutRight {
+  animation: slideOutRight 0.3s ease-in;
+}

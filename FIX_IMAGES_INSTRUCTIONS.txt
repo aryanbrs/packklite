@@ -1,0 +1,74 @@
+═══════════════════════════════════════════════════════════════════
+🔧 QUICK FIX FOR MISSING PRODUCT IMAGES
+═══════════════════════════════════════════════════════════════════
+
+PROBLEM:
+Your products are looking for images with different filenames than what
+you have in the folder.
+
+SOLUTION:
+I've created an automated PowerShell script that will:
+1. Rename incorrectly named files
+2. Create copies of similar images for missing products
+
+═══════════════════════════════════════════════════════════════════
+🚀 HOW TO RUN THE FIX:
+═══════════════════════════════════════════════════════════════════
+
+Option 1: Via Terminal (Easiest)
+────────────────────────────────
+1. Open PowerShell in VS Code terminal
+2. Make sure you're in packlite-next folder
+3. Run: .\fix-images.ps1
+4. Done! Restart dev server
+
+Option 2: Via File Explorer
+────────────────────────────────
+1. Right-click on: fix-images.ps1
+2. Select "Run with PowerShell"
+3. Wait for completion
+4. Restart dev server
+
+═══════════════════════════════════════════════════════════════════
+📋 WHAT THE SCRIPT DOES:
+═══════════════════════════════════════════════════════════════════
+
+RENAMES (2 files):
+• publicimagesbubble_wrap_roll.jpg → bubble_wrap_roll.jpg
+• publicImagescustom_printed_box.jpg → custom_printed_box.jpg
+
+CREATES COPIES (14 files):
+• universal_box_brown_default.jpg → corrugated-box-3ply.jpg
+• mailer_box_brown_5ply.jpg → corrugated-box-5ply.jpg
+• mailer_box_brown_5ply.jpg → brown-mailer-3ply.jpg
+• mailer_box_brown_5ply.jpg → brown-mailer-5ply.jpg
+• universal_box_brown_default.jpg → pizza-box.jpg
+• bubble_wrap_roll.jpg → bubble-wrap.jpg
+• epe_foam_sheet.jpg → epe-foam-sheet.jpg
+• epe_foam_sheet.jpg → epe-foam-jar.jpg
+• clear_bopp_tape.jpg → bopp-tape.jpg
+• brown_packing_tape.jpg → specialty-tape.jpg
+• brown_packing_tape.jpg → custom-tape.jpg
+• thermocol_sheet_white.jpg → thermocol-sheet.jpg
+• thermocol_sheet_white.jpg → thermocol-jar.jpg
+• stretch_film_roll.jpg → stretch-film.jpg
+
+═══════════════════════════════════════════════════════════════════
+⚠️ IF YOU GET SECURITY ERROR:
+═══════════════════════════════════════════════════════════════════
+
+Run this first in PowerShell:
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+Then run the script again.
+
+═══════════════════════════════════════════════════════════════════
+✅ AFTER RUNNING:
+═══════════════════════════════════════════════════════════════════
+
+1. You should see green checkmarks for all operations
+2. Restart your dev server: npm run dev
+3. Visit: http://localhost:3000/products
+4. All product images should now load! 🎉
+
+═══════════════════════════════════════════════════════════════════

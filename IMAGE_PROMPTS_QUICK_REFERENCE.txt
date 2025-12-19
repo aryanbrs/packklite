@@ -1,0 +1,113 @@
+═══════════════════════════════════════════════════════════════════════════
+PACKLITE E-COMMERCE - IMAGE GENERATION QUICK REFERENCE
+═══════════════════════════════════════════════════════════════════════════
+
+📂 SAVE ALL IMAGES TO: 
+public/images/
+
+⚙️ STANDARD SPECS FOR ALL IMAGES:
+• Background: Pure white (#FFFFFF)
+• Quality: High resolution, web-optimized
+• Style: Professional product photography
+• Lighting: Soft, even from top-left
+• Shadow: Subtle drop shadow
+
+═══════════════════════════════════════════════════════════════════════════
+CATEGORY IMAGES (Landscape 1200×800px)
+═══════════════════════════════════════════════════════════════════════════
+
+1️⃣ FILE: category_corrugated_boxes.jpg
+─────────────────────────────────────────────────────────────────────────
+Professional product photography of multiple brown corrugated cardboard boxes of varying sizes stacked artistically. Clean white studio background. Boxes are in pristine condition, showing the corrugated texture. Some boxes are open, some closed. Soft lighting from top-left creating subtle shadows. Photorealistic style. High quality commercial product image. 16:9 aspect ratio.
+─────────────────────────────────────────────────────────────────────────
+
+2️⃣ FILE: category_protective.jpg
+─────────────────────────────────────────────────────────────────────────
+Professional product photography showcasing various protective packaging materials including bubble wrap (clear with air bubbles visible), white foam sheets, and EPE foam rolls. Materials are arranged in an aesthetically pleasing composition. Clean white studio background. Soft professional lighting. Some bubble wrap should show its texture clearly. Photorealistic commercial product image. 16:9 aspect ratio.
+─────────────────────────────────────────────────────────────────────────
+
+3️⃣ FILE: category_tapes.jpg
+─────────────────────────────────────────────────────────────────────────
+Professional product photography of various packaging tapes including brown packing tape rolls, clear tape, and adhesive tape dispensers. Tapes are arranged in a neat composition, some showing the tape being pulled out. Clean white studio background. Glossy tape surfaces reflect light beautifully. Soft professional lighting. Photorealistic commercial product image. 16:9 aspect ratio.
+─────────────────────────────────────────────────────────────────────────
+
+4️⃣ FILE: category_thermocol_foam.jpg
+─────────────────────────────────────────────────────────────────────────
+Professional product photography of white thermocol (expanded polystyrene) sheets and foam blocks in various shapes. Clean white studio background. Shows the characteristic texture of thermocol/EPS foam. Some pieces are stacked, some standing. Soft lighting highlighting the foam texture. Photorealistic commercial product image. 16:9 aspect ratio.
+─────────────────────────────────────────────────────────────────────────
+
+
+═══════════════════════════════════════════════════════════════════════════
+PRODUCT IMAGES (Square 1000×1000px)
+═══════════════════════════════════════════════════════════════════════════
+
+5️⃣ FILE: universal_box_brown_default.jpg
+─────────────────────────────────────────────────────────────────────────
+Professional product photography of a single brown corrugated cardboard box, 3-ply material, closed and sealed. Box is positioned at a 45-degree angle to show three sides (front, top, right). Clean white background with subtle shadow beneath. The box is pristine and new, showing the natural brown kraft paper texture and visible corrugation on edges. Soft professional lighting from top-left. Photorealistic style. Square format 1:1.
+─────────────────────────────────────────────────────────────────────────
+
+6️⃣ FILE: mailer_box_brown_5ply.jpg
+─────────────────────────────────────────────────────────────────────────
+Professional product photography of a brown 5-ply corrugated mailer box with self-locking flaps. Box is shown closed, positioned at 45-degree angle. Thicker/sturdier appearance than 3-ply. Clean white background with subtle shadow. Pristine condition showing high-quality brown kraft paper. Soft professional lighting. Photorealistic commercial style. Square 1:1 format.
+─────────────────────────────────────────────────────────────────────────
+
+7️⃣ FILE: custom_printed_box.jpg
+─────────────────────────────────────────────────────────────────────────
+Professional product photography of a custom printed corrugated box with generic branding/logo placeholder. Box shows high-quality color printing on kraft paper. Positioned at 45-degree angle. Clean white background. The printing should look professional with vibrant colors. Pristine new condition. Soft professional lighting. Photorealistic style. Square 1:1 format.
+─────────────────────────────────────────────────────────────────────────
+
+8️⃣ FILE: bubble_wrap_roll.jpg
+─────────────────────────────────────────────────────────────────────────
+Professional product photography of a large clear bubble wrap roll. Roll is standing upright, slightly angled to show both the roll end and the side. Air bubbles are clearly visible and catch the light beautifully. Clean white background with subtle shadow. The plastic is transparent with visible air pockets creating a pattern. Soft professional lighting making bubbles sparkle. Photorealistic style. Square 1:1 format.
+─────────────────────────────────────────────────────────────────────────
+
+9️⃣ FILE: epe_foam_sheet.jpg
+─────────────────────────────────────────────────────────────────────────
+Professional product photography of white EPE (Expanded Polyethylene) foam sheets. Sheets are stacked with one partially unrolled to show texture. The characteristic closed-cell foam texture is visible. Clean white background. Soft professional lighting. The foam has a slight sheen and cushiony appearance. Photorealistic commercial style. Square 1:1 format.
+─────────────────────────────────────────────────────────────────────────
+
+🔟 FILE: thermocol_sheet_white.jpg
+─────────────────────────────────────────────────────────────────────────
+Professional product photography of white thermocol (EPS) sheets stacked together. Sheets show the characteristic styrofoam texture with visible beads. Clean white background. One sheet is positioned at an angle to show thickness and edge detail. Soft professional lighting. Pristine white thermocol material. Photorealistic commercial style. Square 1:1 format.
+─────────────────────────────────────────────────────────────────────────
+
+1️⃣1️⃣ FILE: brown_packing_tape.jpg
+─────────────────────────────────────────────────────────────────────────
+Professional product photography of a brown packaging tape roll. Roll is shown at an angle with some tape pulled out and curling naturally. The tape has a glossy surface that reflects light. Clean white background with subtle shadow. Pristine new tape roll. The brown color is consistent with kraft paper packaging. Soft professional lighting. Photorealistic style. Square 1:1 format.
+─────────────────────────────────────────────────────────────────────────
+
+1️⃣2️⃣ FILE: clear_bopp_tape.jpg
+─────────────────────────────────────────────────────────────────────────
+Professional product photography of a clear transparent BOPP tape roll. Roll is positioned at an angle with some tape pulled out showing its crystal-clear transparency. Light reflects beautifully off the glossy surface. Clean white background. You can see through the tape. Pristine condition. Soft professional lighting creating highlights on the tape. Photorealistic commercial style. Square 1:1 format.
+─────────────────────────────────────────────────────────────────────────
+
+1️⃣3️⃣ FILE: stretch_film_roll.jpg
+─────────────────────────────────────────────────────────────────────────
+Professional product photography of a large industrial stretch film roll (clear plastic wrap). Roll is standing upright at slight angle. The transparent film has a slight sheen and you can see the roll's core. Clean white background with shadow. Pristine new roll. Soft professional lighting making the film glisten. Photorealistic commercial style. Square 1:1 format.
+─────────────────────────────────────────────────────────────────────────
+
+1️⃣4️⃣ FILE: foam_sheet_packaging.jpg
+─────────────────────────────────────────────────────────────────────────
+Professional product photography of white foam sheets/blocks for packaging. Sheets are stacked with clean edges visible. Soft, cushiony polyethylene foam material. Clean white background. The foam has a matte finish and smooth texture. Positioned to show thickness and quality. Soft professional lighting. Photorealistic commercial style. Square 1:1 format.
+─────────────────────────────────────────────────────────────────────────
+
+1️⃣5️⃣ FILE: placeholder.png
+─────────────────────────────────────────────────────────────────────────
+Simple placeholder image: Clean white background with a centered light gray icon of a package/box. Minimalist design. Text below icon says "Product Image Coming Soon" in gray sans-serif font. Professional and clean appearance. PNG format with transparency. Square 1:1 format.
+─────────────────────────────────────────────────────────────────────────
+
+
+═══════════════════════════════════════════════════════════════════════════
+QUICK INSTRUCTIONS
+═══════════════════════════════════════════════════════════════════════════
+
+1. Copy prompt for each image
+2. Generate using AI (DALL-E 3, Midjourney, Leonardo.ai, etc.)
+3. Save to: public/images/[filename]
+4. Optimize images (compress to <200KB)
+5. Restart dev server: npm run dev
+6. Test on: http://localhost:3000/products
+
+═══════════════════════════════════════════════════════════════════════════
+TOTAL: 15 IMAGES NEEDED
+═══════════════════════════════════════════════════════════════════════════
