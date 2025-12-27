@@ -88,7 +88,7 @@ export default function AdminLayout({ children, session }: AdminLayoutProps) {
     }
     return pathname?.startsWith(href);
   };
-@@
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Top Header */}
