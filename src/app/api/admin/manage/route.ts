@@ -16,6 +16,10 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    if (session.email !== 'admin@packlite.com') {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    }
+
     const admins = await prisma.admin.findMany({
       select: {
         id: true,
@@ -46,11 +50,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const { name, email, password } = await request.json();
+    if (session.email !== 'admin@packlite.com') {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    }
 
-    if (!name || !email || !password) {
+    const { name, email, password, superAdminPassword } = await request.json();
+
+    if (!name || !email || !password || !superAdminPassword) {
       return NextResponse.json(
-        { error: 'Name, email, and password are required' },
+        { error: 'Name, email, password, and your password are required' },
         { status: 400 }
       );
     }
@@ -60,6 +68,20 @@ export async function POST(request: NextRequest) {
         { error: 'Password must be at least 8 characters long' },
         { status: 400 }
       );
+    }
+
+    const superAdmin = await prisma.admin.findUnique({
+      where: { id: session.adminId },
+      select: { password: true },
+    });
+
+    if (!superAdmin) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const isValid = await bcrypt.compare(String(superAdminPassword), superAdmin.password);
+    if (!isValid) {
+      return NextResponse.json({ error: 'Your password is incorrect' }, { status: 400 });
     }
 
     // Check if email already exists

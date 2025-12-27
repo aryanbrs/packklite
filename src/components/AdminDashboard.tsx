@@ -4,11 +4,17 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Plus, Edit2, Trash2, LogOut } from 'lucide-react';
 
+type StockHealth = 'ACTIVE' | 'SLOW' | 'DEAD';
+
 interface Variant {
   id: number;
   sku: string;
   size: string;
   basePrice: number;
+  currentStock?: number;
+  minStockThreshold?: number;
+  stockHealth?: StockHealth;
+  daysSinceMovement?: number | null;
 }
 
 interface Product {
@@ -20,6 +26,7 @@ interface Product {
   imageUrl: string;
   isCustomInquiry: boolean;
   variants: Variant[];
+  stockHealth?: StockHealth;
 }
 
 interface AdminDashboardProps {
@@ -35,9 +42,24 @@ interface AdminDashboardProps {
     quoted: number;
     converted: number;
   };
+  inventoryStats?: {
+    lowStockSkusCount: number;
+    deadSkusCount: number;
+    slowSkusCount: number;
+    totalInventoryValue: number;
+    deadStockValue: number;
+    slowStockValue: number;
+    inventoryValueAtRisk: number;
+    inventoryAlerts: {
+      sku: string;
+      productName: string;
+      issue: string;
+      daysSinceMovement: number | null;
+    }[];
+  };
 }
 
-export default function AdminDashboard({ session, products: initialProducts, quoteStats }: AdminDashboardProps) {
+export default function AdminDashboard({ session, products: initialProducts, quoteStats, inventoryStats }: AdminDashboardProps) {
   const router = useRouter();
   const [products, setProducts] = useState(initialProducts);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -51,6 +73,29 @@ export default function AdminDashboard({ session, products: initialProducts, quo
                          product.productCode.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
+
+  const getStockHealthBadge = (health?: StockHealth) => {
+    if (!health) return null;
+
+    const styles =
+      health === 'ACTIVE'
+        ? 'bg-green-100 text-green-800'
+        : health === 'SLOW'
+          ? 'bg-yellow-100 text-yellow-800'
+          : 'bg-red-100 text-red-800';
+
+    const label = health === 'ACTIVE' ? 'Active' : health === 'SLOW' ? 'Slow' : 'Dead';
+
+    return (
+      <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${styles}`}>
+        {label}
+      </span>
+    );
+  };
+
+  const formatCurrency = (value: number) => {
+    return value.toLocaleString('en-IN', { maximumFractionDigits: 0 });
+  };
 
   const handleLogout = async () => {
     await fetch('/api/admin/logout', { method: 'POST' });
@@ -112,6 +157,83 @@ export default function AdminDashboard({ session, products: initialProducts, quo
           )}
         </div>
 
+        {inventoryStats && (
+          <>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+              <div className="bg-white p-6 rounded-lg shadow">
+                <h3 className="text-gray-500 text-sm font-medium">Low Stock SKUs</h3>
+                <p className="text-3xl font-bold text-gray-900">{inventoryStats.lowStockSkusCount}</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow">
+                <h3 className="text-gray-500 text-sm font-medium">Dead SKUs</h3>
+                <p className="text-3xl font-bold text-red-600">{inventoryStats.deadSkusCount}</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow">
+                <h3 className="text-gray-500 text-sm font-medium">Slow-Moving SKUs</h3>
+                <p className="text-3xl font-bold text-yellow-600">{inventoryStats.slowSkusCount}</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow">
+                <h3 className="text-gray-500 text-sm font-medium">Total Inventory Value</h3>
+                <p className="text-3xl font-bold text-gray-900">₹{formatCurrency(inventoryStats.totalInventoryValue)}</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow">
+                <h3 className="text-gray-500 text-sm font-medium">Inventory Value at Risk</h3>
+                <p className="text-3xl font-bold text-red-600">₹{formatCurrency(inventoryStats.inventoryValueAtRisk)}</p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg shadow mb-8 overflow-hidden">
+              <div className="px-6 py-4 border-b border-gray-200">
+                <h3 className="text-lg font-semibold text-gray-900">Inventory Alerts</h3>
+                <p className="text-sm text-gray-600">Low stock, dead stock, and slow-moving SKUs</p>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SKU</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Issue</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Days Since Movement</th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {inventoryStats.inventoryAlerts.map((alert, idx) => (
+                      <tr key={`${alert.sku}-${idx}`} className="hover:bg-gray-50">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{alert.sku}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{alert.productName}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm">
+                          <span
+                            className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                              alert.issue === 'Low Stock'
+                                ? 'bg-red-100 text-red-800'
+                                : alert.issue === 'DEAD'
+                                  ? 'bg-red-100 text-red-800'
+                                  : 'bg-yellow-100 text-yellow-800'
+                            }`}
+                          >
+                            {alert.issue === 'DEAD' ? 'Dead' : alert.issue === 'SLOW' ? 'Slow' : alert.issue}
+                          </span>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                          {alert.daysSinceMovement === null ? 'N/A' : `${alert.daysSinceMovement} days`}
+                        </td>
+                      </tr>
+                    ))}
+                    {inventoryStats.inventoryAlerts.length === 0 && (
+                      <tr>
+                        <td className="px-6 py-6 text-sm text-gray-500" colSpan={4}>
+                          No alerts right now.
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </>
+        )}
+
         {/* Filters and Actions */}
         <div className="bg-white p-4 rounded-lg shadow mb-6">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
@@ -169,7 +291,10 @@ export default function AdminDashboard({ session, products: initialProducts, quo
                     <div className="flex items-center">
                       <div className="flex-shrink-0 h-10 w-10 bg-gray-200 rounded"></div>
                       <div className="ml-4">
-                        <div className="text-sm font-medium text-gray-900">{product.name}</div>
+                        <div className="flex items-center gap-2">
+                          <div className="text-sm font-medium text-gray-900">{product.name}</div>
+                          {getStockHealthBadge(product.stockHealth)}
+                        </div>
                         <div className="text-sm text-gray-500">{product.productCode}</div>
                       </div>
                     </div>

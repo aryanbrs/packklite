@@ -96,6 +96,14 @@ export async function POST(request: NextRequest) {
       },
     });
 
+    // Track last movement at SKU-level (used for inventory ageing / stock health)
+    const now = new Date();
+    const orderedVariantIds = Array.from(new Set(order.items.map(item => item.variantId)));
+    await prisma.variant.updateMany({
+      where: { id: { in: orderedVariantIds } },
+      data: { lastOrderAt: now },
+    });
+
     // Send email notifications (non-blocking)
     const emailData = {
       orderNumber: order.orderNumber,

@@ -4,7 +4,7 @@
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { LayoutDashboard, Package, ShoppingCart, FileText, Settings, UserCog, LogOut, Menu, X } from 'lucide-react';
+import { LayoutDashboard, Package, ShoppingCart, FileText, Settings, UserCog, LogOut, Menu, X, BarChart3, ClipboardList, History } from 'lucide-react';
 import { useState } from 'react';
 
 interface AdminLayoutProps {
@@ -21,6 +21,8 @@ export default function AdminLayout({ children, session }: AdminLayoutProps) {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const isSuperAdmin = session.email === 'admin@packlite.com';
+
   const handleLogout = async () => {
     await fetch('/api/admin/logout', { method: 'POST' });
     router.push('/admin/login');
@@ -32,6 +34,21 @@ export default function AdminLayout({ children, session }: AdminLayoutProps) {
       href: '/admin/dashboard',
       label: 'Dashboard',
       icon: LayoutDashboard,
+    },
+    {
+      href: '/admin/stock-updates',
+      label: 'Stock Updates',
+      icon: ClipboardList,
+    },
+    {
+      href: '/admin/stock-history',
+      label: 'Stock History',
+      icon: History,
+    },
+    {
+      href: '/admin/sku-performance',
+      label: 'SKU Performance',
+      icon: BarChart3,
     },
     {
       href: '/admin/products',
@@ -60,21 +77,26 @@ export default function AdminLayout({ children, session }: AdminLayoutProps) {
     },
   ];
 
+  const visibleNavItems = navItems.filter(item => {
+    if (item.href === '/admin/manage-admins') return isSuperAdmin;
+    return true;
+  });
+
   const isActive = (href: string) => {
     if (href === '/admin/dashboard') {
       return pathname === href;
     }
     return pathname?.startsWith(href);
   };
-
+@@
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Top Header */}
-      <header className="bg-white shadow-md sticky top-0 z-50">
+      <header className="bg-white sticky top-0 z-50 border-b border-gray-200">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-16">
             {/* Logo/Brand */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="md:hidden p-2 hover:bg-gray-100 rounded-md"
@@ -90,42 +112,45 @@ export default function AdminLayout({ children, session }: AdminLayoutProps) {
                   className="object-contain"
                 />
                 <div>
-                  <h1 className="text-xl font-bold text-gray-900">Packlite Admin</h1>
+                  <h1 className="text-lg font-semibold text-gray-900 leading-tight">Packlite Admin</h1>
+                  <p className="text-[11px] text-gray-500 leading-tight hidden sm:block">Inventory & Operations</p>
                 </div>
               </Link>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-1">
-              {navItems.map((item) => {
-                const Icon = item.icon;
-                const active = isActive(item.href);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-md font-medium transition-colors ${
-                      active
-                        ? 'bg-primary text-white'
-                        : 'text-gray-700 hover:bg-gray-100'
-                    }`}
-                  >
-                    <Icon size={18} />
-                    <span>{item.label}</span>
-                  </Link>
-                );
-              })}
+            <nav className="hidden md:flex flex-1 min-w-0 justify-center px-2">
+              <div className="flex items-center gap-1 overflow-x-auto whitespace-nowrap">
+                {visibleNavItems.map((item) => {
+                  const Icon = item.icon;
+                  const active = isActive(item.href);
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`flex items-center gap-2 px-2.5 py-2 rounded-md text-sm font-medium transition-colors ${
+                        active
+                          ? 'bg-primary text-white'
+                          : 'text-gray-700 hover:bg-gray-100'
+                      }`}
+                    >
+                      <Icon size={18} />
+                      <span>{item.label}</span>
+                    </Link>
+                  );
+                })}
+              </div>
             </nav>
 
             {/* User Menu */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <div className="hidden md:block text-right">
-                <p className="text-sm font-medium text-gray-900">{session.name}</p>
-                <p className="text-xs text-gray-500">{session.email}</p>
+                <p className="text-sm font-semibold text-gray-900 leading-tight">{session.name}</p>
+                <p className="text-xs text-gray-500 leading-tight">{session.email}</p>
               </div>
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors text-sm font-medium"
+                className="flex items-center gap-2 px-3 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors text-sm font-medium"
               >
                 <LogOut size={16} />
                 <span className="hidden md:inline">Logout</span>
@@ -136,7 +161,7 @@ export default function AdminLayout({ children, session }: AdminLayoutProps) {
           {/* Mobile Navigation */}
           {isMobileMenuOpen && (
             <nav className="md:hidden border-t border-gray-200 py-2">
-              {navItems.map((item) => {
+              {visibleNavItems.map((item) => {
                 const Icon = item.icon;
                 const active = isActive(item.href);
                 return (

@@ -38,11 +38,31 @@ export async function POST(request: NextRequest) {
     const data = await request.json();
     const { variants, ...productData } = data;
 
+    const normalizedVariants = (variants || []).map((v: any) => {
+      const currentStock = v.currentStock === undefined || v.currentStock === null ? 0 : Number(v.currentStock);
+      const minStockThreshold = v.minStockThreshold === undefined || v.minStockThreshold === null ? 0 : Number(v.minStockThreshold);
+
+      if (!Number.isFinite(currentStock) || currentStock < 0) {
+        throw new Error('Invalid currentStock');
+      }
+      if (!Number.isFinite(minStockThreshold) || minStockThreshold < 0) {
+        throw new Error('Invalid minStockThreshold');
+      }
+
+      return {
+        sku: v.sku,
+        size: v.size,
+        basePrice: v.basePrice,
+        currentStock,
+        minStockThreshold,
+      };
+    });
+
     const product = await prisma.product.create({
       data: {
         ...productData,
         variants: {
-          create: variants || [],
+          create: normalizedVariants,
         },
       },
       include: { variants: true },

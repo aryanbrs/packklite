@@ -20,9 +20,11 @@ export default function ManageAdminsComponent({ currentAdminId }: ManageAdminsCo
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [editingAdmin, setEditingAdmin] = useState<Admin | null>(null);
-  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', password: '', superAdminPassword: '' });
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
+  const [deleteTarget, setDeleteTarget] = useState<Admin | null>(null);
+  const [deletePassword, setDeletePassword] = useState('');
 
   useEffect(() => {
     fetchAdmins();
@@ -45,10 +47,10 @@ export default function ManageAdminsComponent({ currentAdminId }: ManageAdminsCo
   const handleOpenModal = (admin?: Admin) => {
     if (admin) {
       setEditingAdmin(admin);
-      setFormData({ name: admin.name, email: admin.email, password: '' });
+      setFormData({ name: admin.name, email: admin.email, password: '', superAdminPassword: '' });
     } else {
       setEditingAdmin(null);
-      setFormData({ name: '', email: '', password: '' });
+      setFormData({ name: '', email: '', password: '', superAdminPassword: '' });
     }
     setShowModal(true);
     setError('');
@@ -58,7 +60,7 @@ export default function ManageAdminsComponent({ currentAdminId }: ManageAdminsCo
   const handleCloseModal = () => {
     setShowModal(false);
     setEditingAdmin(null);
-    setFormData({ name: '', email: '', password: '' });
+    setFormData({ name: '', email: '', password: '', superAdminPassword: '' });
     setError('');
     setMessage('');
   };
@@ -67,6 +69,11 @@ export default function ManageAdminsComponent({ currentAdminId }: ManageAdminsCo
     e.preventDefault();
     setError('');
     setMessage('');
+
+    if (!formData.superAdminPassword) {
+      setError('Your password is required to confirm this action');
+      return;
+    }
 
     try {
       let response;
@@ -116,24 +123,42 @@ export default function ManageAdminsComponent({ currentAdminId }: ManageAdminsCo
       return;
     }
 
-    if (!confirm('Are you sure you want to delete this admin? This action cannot be undone.')) {
+    const target = admins.find(a => a.id === adminId) || null;
+    setDeleteTarget(target);
+    setDeletePassword('');
+    setError('');
+    setMessage('');
+  };
+
+  const closeDeleteModal = () => {
+    setDeleteTarget(null);
+    setDeletePassword('');
+  };
+
+  const confirmDelete = async () => {
+    if (!deleteTarget) return;
+    if (!deletePassword) {
+      setError('Your password is required to delete an admin');
       return;
     }
 
     try {
-      const response = await fetch(`/api/admin/manage/${adminId}`, {
+      const response = await fetch(`/api/admin/manage/${deleteTarget.id}`, {
         method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ superAdminPassword: deletePassword }),
       });
 
       if (response.ok) {
         await fetchAdmins();
-        alert('Admin deleted successfully');
+        setMessage('Admin deleted successfully');
+        closeDeleteModal();
       } else {
         const data = await response.json();
-        alert(data.error || 'Failed to delete admin');
+        setError(data.error || 'Failed to delete admin');
       }
     } catch (err) {
-      alert('An error occurred while deleting admin');
+      setError('An error occurred while deleting admin');
     }
   };
 
@@ -314,6 +339,18 @@ export default function ManageAdminsComponent({ currentAdminId }: ManageAdminsCo
                 )}
               </div>
 
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Your Password (confirmation)</label>
+                <input
+                  type="password"
+                  value={formData.superAdminPassword}
+                  onChange={(e) => setFormData({ ...formData, superAdminPassword: e.target.value })}
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="Enter your password to confirm"
+                />
+              </div>
+
               <div className="flex gap-3 pt-4">
                 <button
                   type="button"
@@ -330,6 +367,51 @@ export default function ManageAdminsComponent({ currentAdminId }: ManageAdminsCo
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {deleteTarget && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-bold text-gray-900">Delete Admin</h3>
+              <button onClick={closeDeleteModal} className="text-gray-400 hover:text-gray-600">
+                <X size={24} />
+              </button>
+            </div>
+
+            <div className="space-y-3">
+              <p className="text-sm text-gray-700">
+                You are deleting <span className="font-semibold">{deleteTarget.name}</span> ({deleteTarget.email}).
+              </p>
+              <p className="text-sm text-gray-700">Enter your password to confirm this action.</p>
+
+              <input
+                type="password"
+                value={deletePassword}
+                onChange={(e) => setDeletePassword(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                placeholder="Your password"
+              />
+
+              <div className="flex gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={closeDeleteModal}
+                  className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={confirmDelete}
+                  className="flex-1 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ShoppingCart, Menu, X, User, LogIn, UserPlus, LogOut, LayoutDashboard } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 // Define the navigation links in an array for easy mapping
 const navLinks = [
@@ -19,10 +19,15 @@ const navLinks = [
 
 export default function Navbar() {
   const router = useRouter();
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [customerSession, setCustomerSession] = useState<any>(null);
   const { totalItems } = useCart();
+
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
 
   // Check if customer is logged in
   useEffect(() => {

@@ -48,12 +48,128 @@ export async function PUT(
     const data = await request.json();
     const { variants, ...productData } = data;
 
+    const productId = parseInt(params.id);
+
+    // If variants are present, normalize and validate. If not present, keep existing variants unchanged.
+    const normalizedVariants = Array.isArray(variants)
+      ? variants.map((v: any) => {
+          const currentStock = v.currentStock === undefined || v.currentStock === null ? 0 : Number(v.currentStock);
+          const minStockThreshold = v.minStockThreshold === undefined || v.minStockThreshold === null ? 0 : Number(v.minStockThreshold);
+
+          if (!Number.isFinite(currentStock) || currentStock < 0) {
+            throw new Error('Invalid currentStock');
+          }
+          if (!Number.isFinite(minStockThreshold) || minStockThreshold < 0) {
+            throw new Error('Invalid minStockThreshold');
+          }
+
+          return {
+            id: v.id ? Number(v.id) : null,
+            sku: v.sku,
+            size: v.size,
+            basePrice: v.basePrice,
+            currentStock,
+            minStockThreshold,
+          };
+        })
+      : null;
+
     // Update product
     const product = await prisma.product.update({
-      where: { id: parseInt(params.id) },
+      where: { id: productId },
       data: productData,
       include: { variants: true },
     });
+
+    if (normalizedVariants) {
+      const existingVariantIds = product.variants.map(v => v.id);
+      const incomingIds = normalizedVariants.filter(v => v.id !== null).map(v => v.id as number);
+
+      // Delete removed variants
+      const toDelete = existingVariantIds.filter(id => !incomingIds.includes(id));
+      if (toDelete.length > 0) {
+        await prisma.variant.deleteMany({
+          where: { id: { in: toDelete }, productId },
+        });
+      }
+
+      // Update existing variants
+      const toUpdate = normalizedVariants.filter(v => v.id !== null) as Array<{
+        id: number;
+        sku: string;
+        size: string;
+        basePrice: number;
+        currentStock: number;
+        minStockThreshold: number;
+      }>;
+
+      const existingById = new Map(product.variants.map(v => [v.id, v]));
+
+      await Promise.all(
+        toUpdate.map(v =>
+          prisma.variant.update({
+            where: { id: v.id },
+            data: {
+              sku: v.sku,
+              size: v.size,
+              basePrice: v.basePrice,
+              currentStock: v.currentStock,
+              minStockThreshold: v.minStockThreshold,
+            },
+          })
+        )
+      );
+
+      const stockLedgersToCreate = toUpdate
+        .map(v => {
+          const existing = existingById.get(v.id);
+          if (!existing) return null;
+
+          const previousStock = existing.currentStock;
+          const newStock = v.currentStock;
+          if (previousStock === newStock) return null;
+
+          return {
+            variantId: v.id,
+            adminId: session.adminId,
+            changeType: 'SET' as const,
+            source: 'PRODUCT_EDIT' as const,
+            previousStock,
+            newStock,
+            delta: newStock - previousStock,
+            reason: null as string | null,
+          };
+        })
+        .filter((x): x is NonNullable<typeof x> => Boolean(x));
+
+      if (stockLedgersToCreate.length > 0) {
+        await prisma.stockLedger.createMany({
+          data: stockLedgersToCreate,
+        });
+      }
+
+      // Create new variants
+      const toCreate = normalizedVariants.filter(v => v.id === null);
+      if (toCreate.length > 0) {
+        await prisma.variant.createMany({
+          data: toCreate.map(v => ({
+            sku: v.sku,
+            size: v.size,
+            basePrice: v.basePrice,
+            currentStock: v.currentStock,
+            minStockThreshold: v.minStockThreshold,
+            productId,
+          })),
+        });
+      }
+
+      const refreshed = await prisma.product.findUnique({
+        where: { id: productId },
+        include: { variants: true },
+      });
+
+      return NextResponse.json(refreshed);
+    }
 
     return NextResponse.json(product);
   } catch (error) {

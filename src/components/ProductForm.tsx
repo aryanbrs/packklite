@@ -5,12 +5,17 @@ import { useRouter } from 'next/navigation';
 import { Plus, Trash2, ArrowLeft, Upload, Image as ImageIcon } from 'lucide-react';
 import Image from 'next/image';
 import { useToast } from '@/contexts/ToastContext';
+import { getDaysSince, getLastMovementAt, getStockHealthFromMovementDays } from '@/lib/inventory';
 
 interface Variant {
   id?: number;
   sku: string;
   size: string;
   basePrice: number;
+  currentStock?: number;
+  minStockThreshold?: number;
+  lastOrderAt?: Date | string | null;
+  lastQuoteAt?: Date | string | null;
 }
 
 interface Product {
@@ -124,7 +129,7 @@ export default function ProductForm({ product, mode }: ProductFormProps) {
   const addVariant = () => {
     setFormData({
       ...formData,
-      variants: [...formData.variants, { sku: '', size: '', basePrice: 0 }],
+      variants: [...formData.variants, { sku: '', size: '', basePrice: 0, currentStock: 0, minStockThreshold: 0 }],
     });
   };
 
@@ -139,6 +144,29 @@ export default function ProductForm({ product, mode }: ProductFormProps) {
     const newVariants = [...formData.variants];
     newVariants[index] = { ...newVariants[index], [field]: value };
     setFormData({ ...formData, variants: newVariants });
+  };
+
+  const getStockHealthBadge = (variant: Variant) => {
+    const lastOrderAt = variant.lastOrderAt ? new Date(variant.lastOrderAt) : null;
+    const lastQuoteAt = variant.lastQuoteAt ? new Date(variant.lastQuoteAt) : null;
+    const lastMovementAt = getLastMovementAt(lastOrderAt, lastQuoteAt);
+    const daysSinceMovement = getDaysSince(lastMovementAt);
+    const health = getStockHealthFromMovementDays(daysSinceMovement);
+
+    const styles =
+      health === 'ACTIVE'
+        ? 'bg-green-100 text-green-800'
+        : health === 'SLOW'
+          ? 'bg-yellow-100 text-yellow-800'
+          : 'bg-red-100 text-red-800';
+
+    const label = health === 'ACTIVE' ? 'Active' : health === 'SLOW' ? 'Slow' : 'Dead';
+
+    return (
+      <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${styles}`}>
+        {label}
+      </span>
+    );
   };
 
   return (
@@ -291,9 +319,12 @@ export default function ProductForm({ product, mode }: ProductFormProps) {
         <div className="space-y-4">
           {formData.variants.map((variant, index) => (
             <div key={index} className="flex gap-4 items-start p-4 bg-gray-50 rounded-md">
-              <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="flex-1 grid grid-cols-1 md:grid-cols-5 gap-4">
                 <div>
                   <label className="block text-xs font-medium text-gray-700 mb-1">SKU</label>
+                  <div className="flex items-center gap-2 mb-1">
+                    {getStockHealthBadge(variant)}
+                  </div>
                   <input
                     type="text"
                     required
@@ -321,6 +352,26 @@ export default function ProductForm({ product, mode }: ProductFormProps) {
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     value={variant.basePrice}
                     onChange={(e) => updateVariant(index, 'basePrice', parseFloat(e.target.value))}
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">Current Stock</label>
+                  <input
+                    type="number"
+                    min={0}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    value={variant.currentStock ?? 0}
+                    onChange={(e) => updateVariant(index, 'currentStock', parseInt(e.target.value || '0', 10))}
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">Min Threshold</label>
+                  <input
+                    type="number"
+                    min={0}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    value={variant.minStockThreshold ?? 0}
+                    onChange={(e) => updateVariant(index, 'minStockThreshold', parseInt(e.target.value || '0', 10))}
                   />
                 </div>
               </div>

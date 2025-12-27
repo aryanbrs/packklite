@@ -68,16 +68,25 @@ export default function OrderDetail({ order: initialOrder, session }: OrderDetai
   const [updating, setUpdating] = useState(false);
   const [adminNotes, setAdminNotes] = useState(order.adminNotes || '');
   const [showNotesForm, setShowNotesForm] = useState(false);
+  const [statusToConfirm, setStatusToConfirm] = useState<string | null>(null);
 
   const handleStatusChange = async (newStatus: string) => {
-    if (!confirm(`Change order status to ${newStatus.replace('_', ' ')}?`)) return;
+    setStatusToConfirm(newStatus);
+  };
+
+  const closeStatusModal = () => {
+    setStatusToConfirm(null);
+  };
+
+  const confirmStatusChange = async () => {
+    if (!statusToConfirm) return;
 
     setUpdating(true);
     try {
       const response = await fetch(`/api/orders/${order.orderNumber}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: newStatus }),
+        body: JSON.stringify({ status: statusToConfirm }),
       });
 
       if (response.ok) {
@@ -85,6 +94,7 @@ export default function OrderDetail({ order: initialOrder, session }: OrderDetai
         setOrder(updated);
         alert('Order status updated successfully!');
         router.refresh();
+        closeStatusModal();
       } else {
         alert('Failed to update order status');
       }
@@ -169,6 +179,48 @@ export default function OrderDetail({ order: initialOrder, session }: OrderDetai
       </header>
 
       <main className="container mx-auto px-4 py-8">
+        {statusToConfirm && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-xl font-bold text-gray-900">Confirm Status Update</h3>
+                <button
+                  onClick={closeStatusModal}
+                  className="text-gray-400 hover:text-gray-600"
+                  disabled={updating}
+                >
+                  ×
+                </button>
+              </div>
+
+              <div className="space-y-3">
+                <p className="text-sm text-gray-700">
+                  Change order status to <span className="font-semibold">{statusToConfirm.replace('_', ' ')}</span>?
+                </p>
+
+                <div className="flex gap-3 pt-2">
+                  <button
+                    type="button"
+                    onClick={closeStatusModal}
+                    disabled={updating}
+                    className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors disabled:opacity-50"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    onClick={confirmStatusChange}
+                    disabled={updating}
+                    className="flex-1 px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark transition-colors disabled:opacity-50"
+                  >
+                    {updating ? 'Updating…' : 'Confirm'}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">

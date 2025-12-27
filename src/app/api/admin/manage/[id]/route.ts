@@ -19,8 +19,32 @@ export async function PATCH(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    if (session.email !== 'admin@packlite.com') {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    }
+
     const adminId = parseInt(params.id);
-    const { name, email, password } = await request.json();
+
+    const body = await request.json().catch(() => ({}));
+    const superAdminPassword = body?.superAdminPassword;
+    if (!superAdminPassword) {
+      return NextResponse.json({ error: 'Your password is required' }, { status: 400 });
+    }
+
+    const superAdmin = await prisma.admin.findUnique({
+      where: { id: session.adminId },
+      select: { password: true },
+    });
+    if (!superAdmin) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const isValid = await bcrypt.compare(String(superAdminPassword), superAdmin.password);
+    if (!isValid) {
+      return NextResponse.json({ error: 'Your password is incorrect' }, { status: 400 });
+    }
+
+    const { name, email, password } = body;
 
     const updateData: any = {};
     
@@ -73,7 +97,30 @@ export async function DELETE(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    if (session.email !== 'admin@packlite.com') {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    }
+
     const adminId = parseInt(params.id);
+
+    const body = await request.json().catch(() => ({}));
+    const superAdminPassword = body?.superAdminPassword;
+    if (!superAdminPassword) {
+      return NextResponse.json({ error: 'Your password is required' }, { status: 400 });
+    }
+
+    const superAdmin = await prisma.admin.findUnique({
+      where: { id: session.adminId },
+      select: { password: true },
+    });
+    if (!superAdmin) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const isValid = await bcrypt.compare(String(superAdminPassword), superAdmin.password);
+    if (!isValid) {
+      return NextResponse.json({ error: 'Your password is incorrect' }, { status: 400 });
+    }
 
     // Prevent deleting yourself
     if (session.adminId === adminId) {

@@ -13,6 +13,10 @@ export default async function ManageAdminsPage() {
     redirect('/admin/login');
   }
 
+  if (session.email !== 'admin@packlite.com') {
+    redirect('/admin/dashboard');
+  }
+
   return (
     <AdminLayout session={session}>
       <div className="bg-gray-50 min-h-screen">

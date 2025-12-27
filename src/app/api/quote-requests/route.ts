@@ -7,6 +7,15 @@ export const runtime = 'nodejs';
 
 const prisma = getPrismaClient();
 
+function extractSkusFromText(text: string): string[] {
+  // RFQ notes created from cart include: "... - SKU: <sku>"
+  // Keep extraction permissive so existing quote flows remain unaffected.
+  const matches = text.match(/SKU\s*:\s*([A-Za-z0-9_-]+)/g) || [];
+  return matches
+    .map(m => m.split(':')[1]?.trim())
+    .filter((sku): sku is string => Boolean(sku));
+}
+
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
@@ -33,6 +42,24 @@ export async function POST(request: NextRequest) {
         items: true,
       },
     });
+
+    // Track last movement at SKU-level (used for inventory ageing / stock health)
+    // Quote items do not have a dedicated variant reference; when RFQ is created from cart,
+    // the SKU is embedded in notes ("SKU: <sku>"). We update movement only when SKUs are detected.
+    const now = new Date();
+    const skusFromNotes = Array.from(
+      new Set(
+        (quoteRequest.items || [])
+          .flatMap(item => (item.notes ? extractSkusFromText(item.notes) : []))
+      )
+    );
+
+    if (skusFromNotes.length > 0) {
+      await prisma.variant.updateMany({
+        where: { sku: { in: skusFromNotes } },
+        data: { lastQuoteAt: now },
+      });
+    }
 
     // Send email notifications (non-blocking)
     Promise.all([
